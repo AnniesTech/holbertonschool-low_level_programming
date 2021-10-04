@@ -8,10 +8,14 @@
 
 int main(void)
 {
-	char *put = "_putchar\n";
+	char output[] = "_putchar";
+	int a = 0;
 
-	while (*put)
-	putchar(*put++);
+	for (a = 0; a < 9; a++)
+	{
+		putchar(output[a]);
+	}
 
+	putchar(10);
 	return (0);
 }
