@@ -7,8 +7,8 @@
 
 int main(void)
 {
-int a, b;
-long int t1, t2, c;
+	int a, b;
+	long int t1, t2, c;
 
 	b = 50;
 	t1 = 1;
@@ -17,12 +17,21 @@ long int t1, t2, c;
 
 	printf("%ld, %ld, ", t1, t2);
 
-	for (a = 3; a <= b; ++a)
+	for (a = 3; a <= b; a++)
 	{
-		printf("%ld, ", c);
+		if (a < 50)
+		{
+			printf("%ld, ", c);
+		}
+		else
+		{
+			printf("%ld", c);
+		}
+
 		t1 = t2;
 		t2 = c;
 		c = t1 + t2;
 	}
+	printf("\n");
 	return (0);
 }
