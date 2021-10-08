@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+/**
+ * main - entry point
+ * Return: 0
+ */
+
 int main(void)
 {
 	int a;
@@ -18,11 +23,11 @@ int main(void)
 		{
 			printf("FizzBuzz ");
 		}
-        else
-        {
-            printf("%d ", a);
-        }
+		else
+		{
+			printf("%d ", a);
+		}
 	}
-    printf("\n");
-    return (0);
+	printf("\n");
+	return (0);
 }
