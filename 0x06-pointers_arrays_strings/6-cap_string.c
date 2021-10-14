@@ -8,7 +8,7 @@
 
 char *cap_string(char *str)
 {
-	int a;
+	int a = 0;
 
 	for (a = 0; str[a] != '\0'; a++)
 	{
@@ -21,9 +21,13 @@ char *cap_string(char *str)
 			}
 		}
 
-		if (str[a] == ' ' || str[a] == '\n')
+		if (str[a] == ' ' || str[a] == '\n' || str[a] == '\t'
+			|| str[a] == ',' || str[a] == ';' || str[a] == '.'
+			|| str[a] == '!' || str[a] == '?' || str[a] == '"'
+			|| str[a] == '(' || str[a] == ')' || str[a] == '{'
+			|| str[a] == '}')
 		{
-			a++;
+			++a;
 			if ((str[a] >= 97 && str[a] <= 122))
 			{
 				str[a] = str[a] - 32;
