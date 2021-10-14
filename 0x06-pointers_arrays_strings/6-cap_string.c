@@ -10,30 +10,24 @@ char *cap_string(char *str)
 {
 	int a = 0;
 
-	for (a = 0; str[a] != '\0'; a++)
+	if (str[a] >= 97 && str[a] <= 122)
 	{
-		if (a == 0)
-		{
-			if ((str[a] >= 97 && str[a] <= 122))
-			{
-				str[a] = str[a] - 32;
-				continue;
-			}
-		}
-
+		str[a] -= 32;
+	}
+	while (str[a] != '\0')
+	{
 		if (str[a] == ' ' || str[a] == '\n' || str[a] == '\t'
 			|| str[a] == ',' || str[a] == ';' || str[a] == '.'
 			|| str[a] == '!' || str[a] == '?' || str[a] == '"'
 			|| str[a] == '(' || str[a] == ')' || str[a] == '{'
 			|| str[a] == '}')
 		{
-			++a;
-			if ((str[a] >= 97 && str[a] <= 122))
+			if (str[a + 1] >= 97 && str[a + 1] <= 122)
 			{
-				str[a] = str[a] - 32;
-				continue;
+				str[a + 1] -= 32;
 			}
 		}
+		a++;
 	}
 	return (str);
 }
