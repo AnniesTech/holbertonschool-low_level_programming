@@ -6,23 +6,22 @@
  * Return: to the string.
  */
 
-char *rot13(char *str)
+char *rot13(char *s)
 {
-	int a = 0;
+	int i, j;
+	char a[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char b[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
-	while (str[a] != '\0')
+	for (i = 0; *(s + i); i++)
 	{
-		while ((str[a] >= 'a' && str[a] <= 'z') ||
-				(str[a] >= 'A' && str[a] <= 'Z'))
+		for (j = 0; j < 52; j++)
 		{
-			if ((str[a] >= 'a' && str[a] <= 'm') ||
-					(str[a] >= 'A' && str[a] <= 'M'))
-				str[a] += 13;
-			else
-				str[a] -= 13;
-			a++;
+			if (a[j] == *(s + i))
+			{
+				*(s + i) = b[j];
+				break;
+			}
 		}
-		a++;
 	}
-	return (str);
+	return (s);
 }
