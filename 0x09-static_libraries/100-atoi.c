@@ -2,10 +2,12 @@
 
 /**
  * _atoi - convert a string to an integer.
+ * @s: parameter
+ * Return: 0
  */
 
 int _atoi(char *s)
 {
-    (void)s;
-    return (0);
+	(void)s;
+	return (0);
 }
