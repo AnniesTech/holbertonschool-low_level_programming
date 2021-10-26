@@ -16,7 +16,7 @@ char *_strncat(char *dest, char *src)
 	{
 		continue;
 	}
-	for (b = 0; src[b] != '\0'; b++)
+	for (b = 0; src[b] != '\0'; a++, b++)
 	{
 		dest[a] = src[b];
 	}
@@ -49,7 +49,7 @@ char *str_concat(char *s1, char *s2)
 	for (s1len = 0; s1[s1len] != '\0'; s1len++)
 	{
 		continue;
-	}	
+	}
 	for (s2len = 0; s2[s2len] != '\0'; s2len++)
 	{
 		continue;
