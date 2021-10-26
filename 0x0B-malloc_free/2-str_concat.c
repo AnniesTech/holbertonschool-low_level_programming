@@ -12,12 +12,11 @@ char *_strncat(char *dest, char *src)
 {
 	int a, b;
 
-	a = 0;
-	b = 0;
-
-	for (; dest[a] != '\0'; a++)
-		;
-	for (; src[b] != '\0'; b++)
+	for (a = 0; dest[a] != '\0'; a++)
+	{
+		continue;
+	}
+	for (b = 0; src[b] != '\0'; b++)
 	{
 		dest[a] = src[b];
 	}
@@ -48,9 +47,13 @@ char *str_concat(char *s1, char *s2)
 	}
 
 	for (s1len = 0; s1[s1len] != '\0'; s1len++)
-	;
+	{
+		continue;
+	}	
 	for (s2len = 0; s2[s2len] != '\0'; s2len++)
-	;
+	{
+		continue;
+	}
 
 	s = malloc(sizeof(char) * ((s1len + s2len) + 1));
 
