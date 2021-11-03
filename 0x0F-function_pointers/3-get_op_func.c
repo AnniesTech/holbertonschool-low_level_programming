@@ -5,7 +5,7 @@
  * get_op_func - gets the parameter entered in
  * the console by the user and compares it with the operands functions
  * @s: Value entered in the console
- * Return: NULL, if the signed entered doesn't match
+ * Return: NULL, if the signed entered doesn't
  */
 
 int (*get_op_func(char *s))(int, int)
@@ -22,7 +22,7 @@ int (*get_op_func(char *s))(int, int)
 
 	while (ops[i].op != NULL)
 	{
-		if (strcmp(s, ops[i].op) == 0)
+		if (*s == *ops[i].op)
 		{
 			return (ops[i].f);
 		}
