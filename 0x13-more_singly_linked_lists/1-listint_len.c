@@ -1,6 +1,7 @@
 #include "lists.h"
 /**
  * listint_len - Function that returns the number of elements
+ * in a linked list
  * @h: List to print
  * Return: Number of elements in a linked list
  */
