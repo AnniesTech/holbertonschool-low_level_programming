@@ -16,7 +16,9 @@ size_t dlistint_len(const dlistint_t *h)
 		return (contador);
 
 	while (h->prev != NULL)
+	{
 		h = h->prev;
+	}
 
 	while (h != NULL)
 	{
