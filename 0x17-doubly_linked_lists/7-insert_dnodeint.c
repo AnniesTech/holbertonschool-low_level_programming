@@ -3,7 +3,7 @@
 /**
  * insert_dnodeint_at_index - function that inserts a
  * new node at a given position.
- * @h: Main node 
+ * @h: Main node
  * @idx: index of the new node
  * @n: value of the new node
  * Return: the address of the new node, or NULL if it failed
