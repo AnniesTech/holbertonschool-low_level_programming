@@ -8,20 +8,35 @@
  *
  * Return: The new node
  */
-hash_node_t *new_node(const char *key, const char *value)
+hash_node_t *new_node(hash_node_t **head, const char *key, const char *value)
 {
-	hash_node_t *new = NULL;
+	hash_node_t *tmp;
 
-	new = malloc(sizeof(hash_node_t));
-	if (new == NULL)
+	tmp = *head;
+
+	while (tmp != NULL)
+	{
+		if (strcmp(key, tmp->key) == 0)
+		{
+			free(tmp->value);
+			tmp->value = strdup(value);
+			return (*head);
+		}
+		tmp = tmp->next;
+	}
+
+	tmp = malloc(sizeof(hash_node_t));
+
+	if (tmp == NULL)
 		return (NULL);
-	new->key = strdup(key);
-	new->value = strdup(value);
-	new->next = (NULL);
 
-	return (new);
+	tmp->key = strdup(key);
+	tmp->value = strdup(value);
+	tmp->next = *head;
+	*head = tmp;
+
+	return (*head);
 }
-
 
 /**
  * hash_table_set -  function that adds an element to the hash table.
@@ -34,43 +49,18 @@ hash_node_t *new_node(const char *key, const char *value)
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int index = 0;
-	hash_node_t *merge = NULL, *new = NULL;
+	unsigned long int k_index;
 
-	if (key && key[0] != '\0' && ht && ht->array && ht->size)
-	{
-		/* Generates the hash(index) for the key */
-		index = key_index((const unsigned char *)key, ht->size);
+	if (ht == NULL)
+		return (0);
 
-		/* If the hash index is empty */
-		if (ht->array[index] == NULL)
-		{
-			new = new_node(key, value);
-			ht->array[index] = new;
-			return (1);
-		}
-		/* Collission handling */
-		else
-		{
-			merge = malloc(sizeof(hash_node_t));
-			if (merge == NULL)
-				return (0);
-			merge = ht->array[index];
-			while (merge != NULL)
-			{
-				if (strcmp(merge->key, key) == 0)
-				{
-					merge->value = strdup(value);
-					return (1);
-				}
-				merge = merge->next;
-			}
-			merge = ht->array[index];
-			new = new_node(key, value);
-			new->next = merge;
-			ht->array[index] = new;
-			return (1);
-		}
-	}
-	return (0);
+	if (key == NULL || *key == '\0')
+		return (0);
+
+	k_index = key_index((unsigned char *)key, ht->size);
+
+	if (new_node(&(ht->array[k_index]), key, value) == NULL)
+		return (0);
+
+	return (1);
 }
